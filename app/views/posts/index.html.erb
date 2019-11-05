@@ -1,4 +1,4 @@
-<p>Your user id is: <%= session[:user_id] %></p>
+<p>Welcome <%= User.find_by(id: session[:user_id]).username %></p>
 
 <% @posts.reverse.each do |post| %>
   <p><%= simple_format post.content %></p>
@@ -6,7 +6,7 @@
   <% if post.created_at != post.updated_at %>
   edited: <% end %>
   <%= time_ago_in_words(post.updated_at) %> ago<br>
-  
+
 
   <%= post.created_at.strftime("%H:%M %a %e %b %Y") %>
   <br>

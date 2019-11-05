@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
      session[:user_id] = user.id
      redirect_to '/posts', notice: "Logged in!"
    else
-     flash.now[:alert] = "Email or password is invalid"
-     render "new"
+     flash[:alert] = "Email or password is invalid"
+     render "/"
    end
   end
 
