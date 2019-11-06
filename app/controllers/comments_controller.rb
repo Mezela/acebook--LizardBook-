@@ -25,16 +25,6 @@ end
     redirect_to @comment
   end
 
-  def create
-    @comment = Comment.new(comment_params)
-
-    if @comment.save
-      redirect_to @comment
-    else
-      render 'new'
-    end
-  end
-
   def update
     @comment = Comment.find(params[:id])
 
