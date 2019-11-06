@@ -1,6 +1,7 @@
 <h2 style="text-align:center; margin-bottom:25px; padding-top:20px; background-color:rgba(218,165,32,0.3); color:rgba(47,79,79,0.8); height:80px"><%= @user.full_name %></h2>
 
 <div class="container"">
+
   <div class="row">
     <div class="col-4"  style="background-color: rgba(0,0,0,.1); padding-bottom:15px">
       <br><h5 style="text-align:center">Profile Information</h5><br>
@@ -16,6 +17,8 @@
     </div>
     <div class="col-8">
       <div class="card">
+
+
         <h5 class="card-header">What's on your mind?</h5>
         <div class="card-body">
           <%= render template: "posts/new" %>
@@ -45,7 +48,10 @@
                   edited: <% end %>
                   <%= time_ago_in_words(comment.updated_at) %> ago |
                   <%= comment.created_at.strftime("%H:%M %a %e %b %Y") %> |
-                  <td><%= link_to 'Edit', edit_comment_path(comment) %></td> |
+                  <% @current_path = request.path%>
+                  <%= p @current_path%>
+
+                  <td><%= link_to 'Edit', edit_comment_path(comment, :redirect_path => @current_path) %></td> |
                   <td><%= link_to 'Delete', comment_path(comment),
                           method: :delete,
                           data: { confirm: 'Are you sure?' } %></td>

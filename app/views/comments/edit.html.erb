@@ -1,5 +1,9 @@
 <h1>Edit comment</h1>
 
+<%= p "------------------------------"%>
+<%= p params[:redirect_path]%>
+<%= p "------------------------------"%>
+
 <%= form_with(model: @comment, local: true) do |form| %>
 
   <% if @comment.errors.any? %>
@@ -19,6 +23,8 @@
   <p>
     <%= form.label :text %><br>
     <%= form.text_area :text %>
+    <%= form.hidden_field :redirect_path, :value => params[:redirect_path] %>
+
   </p>
 
   <p>

@@ -28,8 +28,15 @@ end
   def update
     @comment = Comment.find(params[:id])
 
-    if @comment.update(comment_params)
-      redirect_to @comment
+
+    redirect_path = params.require(:comment).permit(:redirect_path)[:redirect_path]
+    p "------------------------------"
+    p redirect_path
+    p "------------------------------"
+
+    if
+       @comment.update(comment_params)
+       redirect_to redirect_path
     else
       render 'edit'
     end
