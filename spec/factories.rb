@@ -1,4 +1,16 @@
 FactoryBot.define do
+  factory :message do
+    content { "MyText" }
+    conversation { nil }
+    user { nil }
+    read { false }
+  end
+
+  factory :conversation do
+    sender_id { 1 }
+    receiver_id { 1 }
+  end
+
 
   factory :user do
     id { "1" }

@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
 
+  get 'messages/new'
+
+  get 'conversations/new'
+
   get 'home/index'
   root 'home#index'
 
