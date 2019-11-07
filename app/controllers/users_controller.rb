@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user.save
 
     if @user.valid?
+      UserMailer.with(user: @user).welcome_email.deliver_later(wait: 1.minute)
       redirect_to '/'
     else @user.invalid?
       signup_error = @user.errors.messages.first.flatten.join(" ")
