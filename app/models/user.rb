@@ -1,8 +1,5 @@
-
-
 class User < ApplicationRecord
   has_secure_password
-  # include Storext.model
 
   has_many :posts
   has_many :comments
@@ -13,8 +10,8 @@ class User < ApplicationRecord
   validates :full_name, presence: true
   validates :birthday, presence: true
 
-  store_attributes :settings do
-    font_family String, default: 'LightIkaros'
-    background_colour String, default: '#EDBB99'
+  has_settings do |s|
+    s.key :font
+    s.key :background
   end
 end
