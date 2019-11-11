@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     user_not_signed_in
 
     if @user = User.find_by(id: params[:id]).present?
-      @user = User.find_by(id: params[:id])
+      @user = User.friendly.find_by(id: params[:id])
       @post = Post.new
       @posts = Post.all
     else
