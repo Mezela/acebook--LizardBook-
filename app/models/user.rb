@@ -12,4 +12,16 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :full_name, presence: true
   validates :birthday, presence: true
+
+    private
+      def set_slug
+        self.slug = full_name.to_s.parameterize
+      end
+
+    after_validation :set_slug, only: [:create, :update]
+
+    def to_param
+      "#{slug}"
+    end
+
 end
