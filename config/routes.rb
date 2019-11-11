@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
 
+  map.resources :statuses,   :path_prefix => '/:user_id'
+  map.resources :users,     :except => [:show]
+  map.user '/:username', :controller => 'users', :action => 'show'
+
 end

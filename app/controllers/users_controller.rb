@@ -61,4 +61,7 @@ class UsersController < ApplicationController
   def update_params
     params.require(:user).permit(:font_family, :background_colour)
   end
+
+  redirect_to status_path( status.user, status )
+  
 end
