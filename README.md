@@ -77,7 +77,7 @@ ID | text | created_at | updated_at | user_id | post_id |
 ID | user_id | post_id |
 
 5. **Comment_Likes Table**  
-ID | user_id | post_id |
+ID | user_id | comment_id |
 
 ### Domain Relationships
 1.| User |------≡| Posts |  
