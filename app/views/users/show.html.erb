@@ -124,11 +124,10 @@ margin-right:auto; width:50%; border-radius:50%; margin-top:15px; margin-bottom:
                 </div>
 
   <!-- like information -->
-                  <span style="color:grey"><span id="postlikecount-<%= post.id %>"><%= post.likes.length %> </span>licks</span>
-                  <br>
-                  <% unless post.likes.length == 0 %>
-                    <span style="color:grey">LICKED BY: <%= post.users.map { |x| x.username }.join(", ") %></span>
-                  <% end %>
+                <span style="color:grey"><span id="postlikecount-<%= post.id %>"><%= post.likes.length %> </span>licks</span>
+                <br>
+                <span style="color:grey">LICKED BY: <span id="postlikedby-<%= post.id %>"> <%= post.users.map { |x| x.username }.join(", ") %></span></span>
+
 
 <!-- comment section starts here (starts with input box) -->
                   <% @post_id = post.id %>

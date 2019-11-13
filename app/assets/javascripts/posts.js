@@ -4,26 +4,26 @@
 $(document).ready(function () {
   $('a').click(function(event) {
     var postID = $(`#${event.target.id}`).attr('value')
-    if(event.target.text === '👎') {
-      $(`#${event.target.id}`).text('👅');
-    } else {
-      $(`#${event.target.id}`).text('👎');
-    }
     var data = { post_id: postID }
     $.ajax({
       url: "/likes/postinfo",
       type: "POST",
       data: { post_id: postID },
       success: function(resp) {
-        updateLikesInfo(postID);
+        updateLikesInfo(postID, event);
       }
     });
   });
 
-  function updateLikesInfo(postID) {
+  function updateLikesInfo(postID, event) {
     $.get('/likes/getinfo', function(data) {
       $(`#postlikecount-${postID}`).text(`${data.likecount} `);
       $(`#postlikedby-${postID}`).text(`${data.likedby} `);
+      if(data.exists) {
+        $(`#${event.target.id}`).text('👎');
+      } else {
+        $(`#${event.target.id}`).text('👅');
+      }
     });
   };
 });
