@@ -98,12 +98,9 @@
                     <%= comment.user.username %>: <b><%= comment.text %></b>
 
                     <!-- comment likes and unlikes -->
-                    | <span style="color:grey"><%= comment.comment_likes.length %> licks |</span>
-                    <% unless @comment_like = CommentLike.exists?(comment.id, session[:user_id]) %>
-                      <%= link_to 'Lick', new_comment_like_path(comment_id: comment.id.to_s, redirect: request.path) %>
-                    <% else %>
-                      <%= link_to 'Unlick', @comment_like, :method => :delete %>
-                    <% end %>
+                    | <span style="color:grey"> <span id="commentlikecount-<%= comment.id %>"><%= comment.comment_likes.length %></span> licks |</span>
+                    <% CommentLike.exists?(comment.id, session[:user_id]) ? (lick_word = 'Unlick') : (lick_word = 'Lick') %>
+                    <%= link_to lick_word, new_comment_like_path(comment_id: comment.id.to_s), remote: true, class: 'commentlike', id: "commentlike-#{comment.id}", value: comment.id %>
                     <br>
 
                     <!-- comment information and edit controls -->
