@@ -22,7 +22,8 @@
 
           <%= form.input :lizard_species, as: :radio_buttons, collection: ['Bearded Dragon', 'Gecko', 'Chameleon', 'Basilisk', 'Toad'], wrapper: :vertical_collection_inline %>
 
-          <%= form.input :birthday %>
+          <%= form.label :birthday %><br>
+          <%= form.date_field :birthday %>
 
           <%= form.input :profile_picture%>
 

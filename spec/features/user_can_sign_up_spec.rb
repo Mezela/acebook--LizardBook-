@@ -16,10 +16,10 @@ RSpec.feature "sign up", type: :feature do
     fill_in "user[password]", with: "password"
     fill_in "user[email]", with: "#Duncan@lizard.com"
     fill_in "user[full_name]", with: "Dr Duncan Lizard"
-    select "Gecko", :from => "user[lizard_species]"
+    choose "Gecko"
     fill_in "user[birthday]", with: "01/01/2019"
     fill_in "user[profile_picture]", with: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-    click_button "Create Account"
+    click_button "Create User"
     expect(current_path).to eq("/signup")
     expect(page).to have_content("username has already been taken")
   end
@@ -31,10 +31,10 @@ RSpec.feature "sign up", type: :feature do
     fill_in "user[password]", with: "pas"
     fill_in "user[email]", with: "Lizard@lizard.com"
     fill_in "user[full_name]", with: "Dr Lizard"
-    select "Gecko", :from => "user[lizard_species]"
+    choose "Gecko"
     fill_in "user[birthday]", with: "01/01/2019"
     fill_in "user[profile_picture]", with: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-    click_button "Create Account"
+    click_button "Create User"
     expect(current_path).to eq("/signup")
     expect(page).to have_content("password is too short (minimum is 6 characters)")
   end
@@ -46,10 +46,10 @@ RSpec.feature "sign up", type: :feature do
     fill_in "user[password]", with: "passwordistoolong"
     fill_in "user[email]", with: "Lizard@lizard.com"
     fill_in "user[full_name]", with: "Dr Lizard"
-    select "Gecko", :from => "user[lizard_species]"
+    choose "Gecko"
     fill_in "user[birthday]", with: "01/01/2019"
     fill_in "user[profile_picture]", with: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-    click_button "Create Account"
+    click_button "Create User"
     expect(current_path).to eq("/signup")
     expect(page).to have_content("password is too long (maximum is 10 characters)")
   end
@@ -62,10 +62,10 @@ RSpec.feature "sign up", type: :feature do
     fill_in "user[password]", with: "password"
     fill_in "user[email]", with: "Duncan@lizard.com"
     fill_in "user[full_name]", with: "Dr Lizard"
-    select "Gecko", :from => "user[lizard_species]"
+    choose "Gecko"
     fill_in "user[birthday]", with: "01/01/2019"
     fill_in "user[profile_picture]", with: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-    click_button "Create Account"
+    click_button "Create User"
     expect(current_path).to eq("/signup")
     expect(page).to have_content("email has already been taken")
   end
@@ -76,10 +76,10 @@ RSpec.feature "sign up", type: :feature do
     fill_in "user[password]", with: "password"
     fill_in "user[email]", with: "Duncan@lizard.com"
     fill_in "user[full_name]", with: "Dr Lizard"
-    select "Gecko", :from => "user[lizard_species]"
+    choose "Gecko"
     fill_in "user[birthday]", with: "01/01/2019"
     fill_in "user[profile_picture]", with: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-    click_button "Create Account"
+    click_button "Create User"
     expect(current_path).to eq("/signup")
     expect(page).to have_content("username can't be blank")
   end

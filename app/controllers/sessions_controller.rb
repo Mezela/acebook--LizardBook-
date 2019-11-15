@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   attr_reader :error
 
   def new
-    Session.new
   end
 
   def create
