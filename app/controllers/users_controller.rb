@@ -45,6 +45,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def detective
+    @user = User.find_by(id: params[:id])
+    render :action => 'detective'
+  end
+
   private
 
   def user_params
