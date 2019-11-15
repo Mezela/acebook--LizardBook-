@@ -145,7 +145,7 @@ margin-right:auto; width:50%; border-radius:50%; margin-top:15px; margin-bottom:
                       <%= comment.user.username %>: <b><%= comment.text %></b>
 
                       <!-- comment likes and unlikes -->
-                      | <span style="color:grey"> <span id="commentlikecount-<%= post.id %>"><%= comment.comment_likes.length %></span> licks |</span>
+                      | <span style="color:grey"> <span id="commentlikecount-<%= comment.id %>"><%= comment.comment_likes.length %></span> licks |</span>
                       <% CommentLike.exists?(comment.id, session[:user_id]) ? (lick_word = 'Unlick') : (lick_word = 'Lick') %>
                       <%= link_to lick_word, new_comment_like_path(comment_id: comment.id.to_s), remote: true, class: 'commentlike', id: "commentlike-#{comment.id}", value: comment.id %>
                       <br>
