@@ -57,8 +57,13 @@ margin-right:auto; width:50%; border-radius:50%; margin-top:15px; margin-bottom:
 
             <ul style="margin-top: 25px" class="list-group list-group-flush">
             <li class="list-group-item">
-
+            <% if @user.id != session[:user_id] %>
+              <br>
+              <a href="/users/<%=@user.id%>/detective" style="font-color:red"> REPORT NON-LIZARD </a>
+              <br><br>
+            <% end %>
             <b>Settings:</b><br>
+
 
             <%= render template: "/users/edit"%></li>
           </ul>
