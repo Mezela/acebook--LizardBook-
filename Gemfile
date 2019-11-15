@@ -29,7 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
