@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+
+<!-- <style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</style> -->
+
+<% if flash[:notice] %>
+ <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -72,8 +81,13 @@ margin-right:auto; width:50%; border-radius:50%; margin-top:15px; margin-bottom:
 
             <ul style="margin-top: 25px" class="list-group list-group-flush">
             <li class="list-group-item">
-
+            <% if @user.id != session[:user_id] %>
+              <br><center>
+              <a class="btn btn-danger" href="/users/<%=@user.id%>/detective" style="font-color:red"> REPORT NON-LIZARD </a>
+              </center><br>
+            <% end %>
             <b>Settings:</b><br>
+
 
             <%= render template: "/users/edit"%></li>
           </ul>
@@ -138,12 +152,10 @@ margin-right:auto; width:50%; border-radius:50%; margin-top:15px; margin-bottom:
                   </div>
                 </div>
 
-                <!-- like information -->
-                  <span style="color:grey"><span id="postlikecount-<%= post.id %>"><%= post.likes.length %> </span>licks</span>
-                  <br>
-                  <% unless post.likes.length == 0 %>
-                    <span style="color:grey">LICKED BY: <%= post.users.map { |x| x.username }.join(", ") %></span>
-                  <% end %>
+             <!-- like information -->
+                <span style="color:grey"><span id="postlikecount-<%= post.id %>"><%= post.likes.length %> </span>licks</span>
+                <br>
+                <span style="color:grey">LICKED BY: <span id="postlikedby-<%= post.id %>"> <%= post.users.map { |x| x.username }.join(", ") %></span></span>
 
                 <!-- comment section starts here (starts with input box) -->
                   <% @post_id = post.id %>
@@ -183,13 +195,10 @@ margin-right:auto; width:50%; border-radius:50%; margin-top:15px; margin-bottom:
                               <% end %>
                             </p>
 
-                  <!-- comment likes and unlikes -->
-                  | <span style="color:grey"> <%= comment.comment_likes.length %> licks |</span>
-                            <% unless @comment_like = CommentLike.exists?(comment.id, session[:user_id]) %>
-                              <%= link_to 'Lick', new_comment_like_path(comment_id: comment.id.to_s, redirect: request.path) %>
-                            <% else %>
-                              <%= link_to 'Unlick', @comment_like, :method => :delete %>
-                    <% end %>
+                          <!-- comment likes and unlikes -->
+                            | <span style="color:grey"> <span id="commentlikecount-<%= comment.id %>"><%= comment.comment_likes.length %></span> licks |</span>
+                              <% CommentLike.exists?(comment.id, session[:user_id]) ? (lick_word = 'Unlick') : (lick_word = 'Lick') %>
+                              <%= link_to lick_word, new_comment_like_path(comment_id: comment.id.to_s), remote: true, class: 'commentlike', id: "commentlike-#{comment.id}", value: comment.id %>
                             <br>
                           </div>
                         </div>

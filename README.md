@@ -57,27 +57,29 @@ First, clone this repository. Then:
 ✅ Users can only edit their own comments or posts, up-to 10 minutes after posting.  
 ✅ Users can post to another users profile OR to the main newsfeed.  
 ✅ Users can customise their own profile font & background colour.  
-✅ Users can 'like' a post or comment.  
+✅ Users can 'like' a post or comment (only once).  
 ✅ Users can undo a 'like' on a post or comment.  
-✅ Custom (404) This user does not exist
+✅ Custom (404): This user does not exist.
+✅ Users username can be used to form the url for their profile page i.e. /users/:username
+✅ Browser does not refresh when users like a post or a comment.
 
 ----------
 ## Database Tables
 
-1. **User Table**  
-ID | username | password | email | full_name | lizard_species | birthday | profile_picture | created_at | updated_at | font_family | background_colour |  
+1. **Users Table**  
+ID | username | password | email | full_name | lizard_species | birthday | profile_picture | created_at | updated_at | font_family | background_colour |  slug 
 
-2. **Post Table**  
+2. **Posts Table**  
 ID | content | created_at | updated_at | user_id | receiver_id |
 
-3. **Comment Table**  
+3. **Comments Table**  
 ID | text | created_at | updated_at | user_id | post_id |
 
 4. **Likes Table**  
 ID | user_id | post_id |
 
 5. **Comment_Likes Table**  
-ID | user_id | post_id |
+ID | user_id | comment_id |
 
 ### Domain Relationships
 1.| User |------≡| Posts |  
@@ -97,3 +99,4 @@ ID | user_id | post_id |
 - Bcrypt
 - RSpec
 - Capybara
+- JQuery

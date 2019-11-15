@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
-
-
   get 'settings/new'
 
   get 'home/index'
+
   get 'likes/getinfo'
   post 'likes/postinfo'
 
+  get 'comment-likes/getinfo'
+  post 'comment-likes/postinfo'
   root 'home#index'
 
   resources :users
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   resources :likes
   resources :comment_likes
 
+  get 'users/:id/detective', to: 'users#detective'
 
 
   get "signup", to: "users#new", as: "signup"
