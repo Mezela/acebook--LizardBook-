@@ -1,16 +1,13 @@
 <p id="alert"><%= alert %></p>
 
-<h1>Login</h1>
-<%= form_tag sessions_path do |form| %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
+<h3 style="text-align:center; margin-bottom:25px">
+  Login
+  <small class="text-muted">to enjoy LizardBook's fine features</small>
+</h3>
+<%= simple_form_for :login, {url: sessions_path } do |form| %>
+  <%= form.input :email %>
+
+  <%= form.input :password %>
+
+  <%= form.button :submit, "Login", class: "btn-info" %>
 <% end %>

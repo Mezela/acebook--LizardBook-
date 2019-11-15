@@ -10,15 +10,15 @@ def signup_as_new_user(user)
   fill_in "user[password]", with: "password"
   fill_in "user[email]", with: "#{user}@lizard.com"
   fill_in "user[full_name]", with: "Dr #{user} Lizard"
-  select "Gecko", :from => "user[lizard_species]"
+  choose "Gecko"
   fill_in "user[birthday]", with: "2010-01-01"
   fill_in "user[profile_picture]", with: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-  click_button "Create Account"
+  click_button "Create User"
   click_link "LogOut"
 end
 
 def login_as_user(user)
-  fill_in "email", with: "#{user}@lizard.com"
-  fill_in "Password", with: "password"
+  fill_in "login[email]", with: "#{user}@lizard.com"
+  fill_in "login[password]", with: "password"
   click_button "Login"
 end
