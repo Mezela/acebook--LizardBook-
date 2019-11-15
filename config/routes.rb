@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'likes/getinfo'
   post 'likes/postinfo'
 
+  get 'comment-likes/getinfo'
+  post 'comment-likes/postinfo'
+
   root 'home#index'
 
   resources :users
