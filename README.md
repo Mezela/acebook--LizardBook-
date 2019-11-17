@@ -59,9 +59,9 @@ First, clone this repository. Then:
 ✅ Users can customise their own profile font & background colour.  
 ✅ Users can 'like' a post or comment (only once).  
 ✅ Users can undo a 'like' on a post or comment.  
-✅ Custom (404): This user does not exist.
-✅ Users username can be used to form the url for their profile page i.e. /users/:username
-✅ Browser does not refresh when users like a post or a comment.
+✅ Custom (404): This user does not exist.  
+✅ Users username can be used to form the url for their profile page i.e. /users/:username  
+✅ Browser does not refresh when users like a post or a comment.  
 
 ----------
 ## Database Tables
